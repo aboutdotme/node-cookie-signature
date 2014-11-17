@@ -1,7 +1,7 @@
 
 # cookie-signature
 
-  Sign and unsign cookies.
+  Sign and unsign cookies in the same way as [Beaker](https://pypi.python.org/pypi/Beaker/1.6.4).
 
 ## Example
 
@@ -9,7 +9,7 @@
 var cookie = require('cookie-signature');
 
 var val = cookie.sign('hello', 'tobiiscool');
-val.should.equal('hello.DGDUkGlIkCzPz+C0B064FNgHdEjox7ch8tOBGslZ5QI');
+val.should.equal('cbd3d3ca673b961ac18dff67719bd5413a11d384hello');
 
 var val = cookie.sign('hello', 'tobiiscool');
 cookie.unsign(val, 'tobiiscool').should.equal('hello');
