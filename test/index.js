@@ -6,11 +6,11 @@ var cookie = require('..');
 
 describe('.sign(val, secret)', function(){
   it('should sign the cookie', function(){
-    var val = cookie.sign('hello', 'tobiiscool');
-    val.should.equal('hello.DGDUkGlIkCzPz+C0B064FNgHdEjox7ch8tOBGslZ5QI');
+    var val = cookie.sign('2f323dde2cee4512b3d8e13050532f7f', 'coolsecret');
+    val.should.equal('0232b8ce6f993711f9c623ff95969e6454591da22f323dde2cee4512b3d8e13050532f7f');
 
-    var val = cookie.sign('hello', 'luna');
-    val.should.not.equal('hello.DGDUkGlIkCzPz+C0B064FNgHdEjox7ch8tOBGslZ5QI');
+    var val = cookie.sign('2f323dde2cee4512b3d8e13050532f7f', 'luna');
+    val.should.not.equal('0232b8ce6f993711f9c623ff95969e6454591da22f323dde2cee4512b3d8e13050532f7f');
   })
 })
 

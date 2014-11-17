@@ -16,11 +16,10 @@ var crypto = require('crypto');
 exports.sign = function(val, secret){
   if ('string' != typeof val) throw new TypeError('cookie required');
   if ('string' != typeof secret) throw new TypeError('secret required');
-  return val + '.' + crypto
-    .createHmac('sha256', secret)
+  return crypto
+    .createHmac('sha1', secret)
     .update(val)
-    .digest('base64')
-    .replace(/\=+$/, '');
+    .digest('hex') + val;
 };
 
 /**
@@ -36,7 +35,7 @@ exports.sign = function(val, secret){
 exports.unsign = function(val, secret){
   if ('string' != typeof val) throw new TypeError('cookie required');
   if ('string' != typeof secret) throw new TypeError('secret required');
-  var str = val.slice(0, val.lastIndexOf('.'))
+  var str = val.substring(40)
     , mac = exports.sign(str, secret);
   
   return sha1(mac) == sha1(val) ? str : false;
