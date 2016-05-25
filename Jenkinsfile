@@ -7,5 +7,8 @@ node {
 
     stage 'Test'
     compose.test {}
+
+    // Post to slack
+    build.success {}
 }
 
